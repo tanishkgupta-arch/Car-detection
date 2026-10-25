@@ -1,0 +1,42 @@
+#Wap to write code for car detection using haarcascade files.
+
+'''
+import cv2 
+
+Car=cv2.CascadeClassifier()
+
+cv2.data.haarcascades+"haarcascade_car.xml"
+
+cv2.imread(Car.jpeg)
+
+while True:
+    success,img=Car.read()
+    gray=cv2.cvtColor(Car,cv2.COLOR_BGR2GRAY)
+    Car=Car.detectMultiScale(gray,1.3,5)
+    for(x,y,w,h)in Car:
+        cv2.rectangle(img,(x,y),(x+w,y+h)(0,0,255),3)
+
+    cv2.imshow("Car detect",img)
+    if cv2.waitKey(1)==ord('e'):
+        break
+Car.release()
+cv2.destroyAllWindows()
+'''
+
+import cv2
+image_path=input("Enter image path")
+car_casscade=cv2.CascadeClassifier("haarcascade_car.xml")
+img=cv2.imread(image_path)
+if img is None:
+    print("image not found")
+else :
+    gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    car=car_casscade.detectMultiScale(gray,1.1,2)
+    for (x,y,w,h)in car:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,225,0),3)
+    print("total cars detected",len(car))
+    cv2.imshow("Cars detection",img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
